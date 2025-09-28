@@ -1,6 +1,6 @@
 import subprocess, sys
 from asyncio.log import logger
-
+import importlib.resources as pkg_resources
 
 def open_file(file_path):
     try:
@@ -15,6 +15,7 @@ def open_file(file_path):
 
 
 
-if __name__ == '__main__':
-    file_path = '../../ressources/presentation_ogiv.pptx'
-    open_file(file_path)
+def main():
+    file = ''
+    with pkg_resources.path('baudream.ressources', file) as file_path:
+        open_file(file_path)
